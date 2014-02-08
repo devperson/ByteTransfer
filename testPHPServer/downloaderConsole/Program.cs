@@ -17,9 +17,15 @@ namespace downloaderConsole
 
             var result = Console.ReadLine();
             if (result.ToLower() == "start")
+            {
+                Console.WriteLine("Downloading started!");
                 d.StartDownload();
+            }
             if (result.ToLower() == "clear")
+            {
                 d.Clear();
+                Console.WriteLine("All data cleared on Server.");
+            }
 
             Console.ReadLine();
         }
@@ -92,6 +98,10 @@ namespace downloaderConsole
                     Console.WriteLine(" Part " + currentCount + " downloaded !");
 
                     var buffer = Convert.FromBase64String(e.Result.Data);
+
+                    if (!Directory.Exists("Data"))
+                        Directory.CreateDirectory("Data");
+
                     this.WriteChunk(buffer, currentCount - 1, "Data\\downloaded_" + fInfo.FileName);                                      
                 }
 

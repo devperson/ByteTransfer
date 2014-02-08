@@ -11,22 +11,37 @@ namespace uploaderConsole
     {
         
         static void Main(string[] args)
-        {
-            Console.WriteLine("Type \"start\" to start uploading.");
+        {            
+            if (!Directory.Exists("Data"))
+                Directory.CreateDirectory("Data");
 
-            var filePath = Directory.GetFiles("Data").FirstOrDefault();                        
-            
-            UploadProcessor up = new UploadProcessor(filePath);            
+            var filePath = Directory.GetFiles("Data").FirstOrDefault();
 
-            var result = Console.ReadLine();
-            if (result.ToLower() == "start")
-                up.StartUpload();
-            if (result.ToLower() == "clear")
-                up.Clear();
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                Console.WriteLine("Type \"start\" to start uploading.");                
 
+                var result = Console.ReadLine();
+                if (result.ToLower() == "start")
+                {
+                    UploadProcessor up = new UploadProcessor(filePath);
+                    Console.WriteLine("Uploading started!");
+                    up.StartUpload();
+                }
+                if (result.ToLower() == "clear")
+                {
+                    UploadProcessor up = new UploadProcessor();
+                    up.Clear();
+                    Console.WriteLine("All data cleared on Server.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("There's no file to upload in Data folder ." + Environment.NewLine +
+                                  " Make sure to add one file to Data folder for uploading.");
+            }
             Console.ReadLine();
-        }
-        
+        }        
     }
 
     public class UploadProcessor
@@ -40,6 +55,10 @@ namespace uploaderConsole
         int chunkCount;
         string filePath;
 
+        public UploadProcessor()
+        {
+
+        }
 
         public UploadProcessor(string path)
         {            
@@ -61,7 +80,7 @@ namespace uploaderConsole
             c.GetRequiredPartCompleted += c_GetRequiredPartCompleted;
         }
 
-        void c_GetRequiredPartCompleted(object sender, GetRequiredPartCompletedEventArgs e)
+        public void c_GetRequiredPartCompleted(object sender, GetRequiredPartCompletedEventArgs e)
         {
             if (e.Error == null && e.Result != 0)
             {
@@ -87,6 +106,7 @@ namespace uploaderConsole
         {
             if (finished)
             {
+                Console.WriteLine("Finished!");
                 if (this.Finished != null)
                     this.Finished(this, EventArgs.Empty);
             }
@@ -123,10 +143,5 @@ namespace uploaderConsole
             }
             return buffer;
         }
-    }
-
-    public class Chunk
-    {
-        public string Value { get; set; }
     }
 }
