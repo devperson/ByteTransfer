@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://testphpservice.e3w.ru/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://testphpservice.e3w.ru/?wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://testphpservice.e3w.ru/?wsdl">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="PartialData">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="Data" type="xsd:string" />
+          <xsd:element name="IsCompleted" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="FileInfoData">
+        <xsd:all>
+          <xsd:element name="FileName" type="xsd:string" />
+          <xsd:element name="ChunkSize" type="xsd:int" />
+          <xsd:element name="ChunkCount" type="xsd:int" />
+          <xsd:element name="LastChunkSize" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PushValRequest">
+    <wsdl:part name="inVal" type="tns:PartialData" />
+  </wsdl:message>
+  <wsdl:message name="PushValResponse" />
+  <wsdl:message name="GetValRequest" />
+  <wsdl:message name="GetValResponse">
+    <wsdl:part name="result" type="tns:PartialData" />
+  </wsdl:message>
+  <wsdl:message name="PushFileInfoRequest">
+    <wsdl:part name="inVal" type="tns:FileInfoData" />
+  </wsdl:message>
+  <wsdl:message name="PushFileInfoResponse" />
+  <wsdl:message name="PullFileInfoRequest" />
+  <wsdl:message name="PullFileInfoResponse">
+    <wsdl:part name="result" type="tns:FileInfoData" />
+  </wsdl:message>
+  <wsdl:message name="SetRequiredPartRequest">
+    <wsdl:part name="inval" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="SetRequiredPartResponse" />
+  <wsdl:message name="GetRequiredPartRequest" />
+  <wsdl:message name="GetRequiredPartResponse">
+    <wsdl:part name="outval" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ClearValRequest" />
+  <wsdl:message name="ClearValResponse" />
+  <wsdl:portType name="hellotestingPortType">
+    <wsdl:operation name="PushVal">
+      <documentation>Sample of embedded classes...</documentation>
+      <wsdl:input message="tns:PushValRequest" />
+      <wsdl:output message="tns:PushValResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVal">
+      <documentation>Sample of embedded classes...</documentation>
+      <wsdl:input message="tns:GetValRequest" />
+      <wsdl:output message="tns:GetValResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PushFileInfo">
+      <documentation>Sample of embedded classes...</documentation>
+      <wsdl:input message="tns:PushFileInfoRequest" />
+      <wsdl:output message="tns:PushFileInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PullFileInfo">
+      <documentation>Sample of embedded classes...</documentation>
+      <wsdl:input message="tns:PullFileInfoRequest" />
+      <wsdl:output message="tns:PullFileInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRequiredPart">
+      <documentation>Sample of embedded classes...</documentation>
+      <wsdl:input message="tns:SetRequiredPartRequest" />
+      <wsdl:output message="tns:SetRequiredPartResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequiredPart">
+      <documentation>Sample of embedded classes...</documentation>
+      <wsdl:input message="tns:GetRequiredPartRequest" />
+      <wsdl:output message="tns:GetRequiredPartResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearVal">
+      <wsdl:input message="tns:ClearValRequest" />
+      <wsdl:output message="tns:ClearValResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="hellotestingBinding" type="tns:hellotestingPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="PushVal">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/PushVal" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVal">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/GetVal" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PushFileInfo">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/PushFileInfo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PullFileInfo">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/PullFileInfo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRequiredPart">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/SetRequiredPart" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequiredPart">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/GetRequiredPart" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://testphpservice.e3w.ru/?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearVal">
+      <soap:operation soapAction="http://testphpservice.e3w.ru/index.php/ClearVal" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="hellotesting">
+    <wsdl:port name="hellotestingPort" binding="tns:hellotestingBinding">
+      <soap:address location="http://testphpservice.e3w.ru/index.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

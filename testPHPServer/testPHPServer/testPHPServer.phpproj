@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>testPHPServer</Name>
+    <ProjectGuid>cb988f9d-2306-420f-95b1-bd7d5ac0a882</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>testPHPServer</RootNamespace>
+    <!-- important to be opened by PHP Tools, when also Phalanger Tools are installed -->
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>testPHPServer</AssemblyName>
+    <IISProjectUrl>http://localhost:7278/</IISProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="index.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.nusoap_base.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.soapclient.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.soap_fault.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.soap_parser.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.soap_server.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.soap_transport_http.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.soap_val.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.wsdl.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.wsdlcache.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\class.xmlschema.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\JSONDiskCache\JSONDiskCache.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\JSONDiskCache\JSONDiskCacheException.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\nusoap.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\nusoapmime.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PhPInfo.php">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib" />
+    <Folder Include="lib\JSONDiskCache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\JSONDiskCache\LICENSE">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>
