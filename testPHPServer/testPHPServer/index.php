@@ -83,7 +83,7 @@ function PushVal($inVal)
 {    
     $JSONDiskCache = new JSONDiskCache();
     
-    $JSONDiskCache->set("pushedVal",$inVal,172800);                
+    $JSONDiskCache->set("pushedVal",$inVal,172800);         
 }
 
 function GetVal()

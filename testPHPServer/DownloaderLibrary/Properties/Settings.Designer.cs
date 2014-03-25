@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace uploaderConsole.Properties {
+namespace DownloaderLibrary.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,6 +20,16 @@ namespace uploaderConsole.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://testphpservice.e3w.ru/index.php")]
+        public string DownloaderLibrary_ru_e3w_testphpservice_hellotesting {
+            get {
+                return ((string)(this["DownloaderLibrary_ru_e3w_testphpservice_hellotesting"]));
             }
         }
     }

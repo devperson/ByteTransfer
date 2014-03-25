@@ -22,15 +22,5 @@ namespace downloaderConsole.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://testphpservice.e3w.ru/index.php")]
-        public string downloaderConsole_ru_e3w_testphpservice_hellotesting {
-            get {
-                return ((string)(this["downloaderConsole_ru_e3w_testphpservice_hellotesting"]));
-            }
-        }
     }
 }

@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace downloaderConsole.ru.e3w.testphpservice {
+namespace UploaderLibrary.ru.e3w.testphpservice {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -47,7 +47,7 @@ namespace downloaderConsole.ru.e3w.testphpservice {
         
         /// <remarks/>
         public hellotesting() {
-            this.Url = global::downloaderConsole.Properties.Settings.Default.downloaderConsole_ru_e3w_testphpservice_hellotesting;
+            this.Url = global::UploaderLibrary.Properties.Settings.Default.UploaderLibrary_ru_e3w_testphpservice_hellotesting;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
